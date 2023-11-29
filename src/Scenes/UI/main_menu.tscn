@@ -1,0 +1,185 @@
+[gd_scene load_steps=7 format=3 uid="uid://dc4250tb2ecmd"]
+
+[ext_resource type="Texture2D" uid="uid://dpj2xyhvuptdm" path="res://Assets/UI/Buttons/MenuButtonGrayOrangeBorder/MenuButtonGrayOrangeBorder_Normal.png" id="1_08m42"]
+[ext_resource type="Texture2D" uid="uid://d1nry2fosuggh" path="res://Assets/Other/BGBlack.png" id="1_cy7qg"]
+[ext_resource type="Texture2D" uid="uid://d4ggfoabk235t" path="res://Assets/Other/MainMenuGraphic.png" id="2_03l7u"]
+[ext_resource type="Texture2D" uid="uid://u7p41x2ndc7h" path="res://Assets/UI/Buttons/MenuButtonGrayOrangeBorder/MenuButtonGrayOrangeBorder_Pressed.png" id="2_5d0iw"]
+[ext_resource type="Texture2D" uid="uid://d3huq58tlo05c" path="res://Assets/UI/Buttons/MenuButtonGrayOrangeBorder/MenuButtonGrayOrangeBorder_Hover.png" id="2_7c7u1"]
+[ext_resource type="FontFile" uid="uid://balhd3cdoj2gg" path="res://Assets/UI/Fonts/Custom/manaspc_custom.tres" id="4_714g1"]
+
+[node name="MainMenu" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_horizontal_guides_ = []
+
+[node name="BG" type="TextureRect" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_cy7qg")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="HBox" type="HBoxContainer" parent="MarginContainer"]
+layout_direction = 2
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxGraphic" type="VBoxContainer" parent="MarginContainer/HBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/HBox/VBoxGraphic"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_714g1")
+theme_override_font_sizes/font_size = 60
+text = "D U P L I C I T Y
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRectGraphic" type="TextureRect" parent="MarginContainer/HBox/VBoxGraphic"]
+layout_mode = 2
+texture = ExtResource("2_03l7u")
+stretch_mode = 5
+
+[node name="VBoxButtons" type="VBoxContainer" parent="MarginContainer/HBox"]
+custom_minimum_size = Vector2(800, 2.08165e-12)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 30
+alignment = 2
+
+[node name="ButtonPlay" type="TextureButton" parent="MarginContainer/HBox/VBoxButtons"]
+custom_minimum_size = Vector2(500, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("1_08m42")
+texture_pressed = ExtResource("2_5d0iw")
+texture_hover = ExtResource("2_7c7u1")
+stretch_mode = 0
+
+[node name="LabelButtonPlay" type="Label" parent="MarginContainer/HBox/VBoxButtons/ButtonPlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.670588)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_714g1")
+theme_override_font_sizes/font_size = 60
+text = "Play Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 4
+uppercase = true
+
+[node name="ButtonSettings" type="TextureButton" parent="MarginContainer/HBox/VBoxButtons"]
+custom_minimum_size = Vector2(500, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("1_08m42")
+texture_pressed = ExtResource("2_5d0iw")
+texture_hover = ExtResource("2_7c7u1")
+stretch_mode = 0
+
+[node name="LabelButtonSettings" type="Label" parent="MarginContainer/HBox/VBoxButtons/ButtonSettings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.670588)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_714g1")
+theme_override_font_sizes/font_size = 60
+text = "Settings
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 3
+uppercase = true
+
+[node name="ButtonAbout" type="TextureButton" parent="MarginContainer/HBox/VBoxButtons"]
+custom_minimum_size = Vector2(500, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("1_08m42")
+texture_pressed = ExtResource("2_5d0iw")
+texture_hover = ExtResource("2_7c7u1")
+stretch_mode = 0
+
+[node name="LabelButtonAbout" type="Label" parent="MarginContainer/HBox/VBoxButtons/ButtonAbout"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.670588)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_714g1")
+theme_override_font_sizes/font_size = 60
+text = "About
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 3
+uppercase = true
+
+[node name="ButtonQuit" type="TextureButton" parent="MarginContainer/HBox/VBoxButtons"]
+custom_minimum_size = Vector2(500, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("1_08m42")
+texture_pressed = ExtResource("2_5d0iw")
+texture_hover = ExtResource("2_7c7u1")
+stretch_mode = 0
+
+[node name="LabelButtonQuit" type="Label" parent="MarginContainer/HBox/VBoxButtons/ButtonQuit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.670588)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_714g1")
+theme_override_font_sizes/font_size = 60
+text = "Quit Game
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 3
+uppercase = true
