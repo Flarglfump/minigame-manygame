@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://e1op1562esd5"
-path="res://.godot/imported/Door-Sheet-Scaled.png-9f8334641db0280b0c2b514ac58d7f62.ctex"
+uid="uid://boii8d5ibu66n"
+path="res://.godot/imported/KB_Button-LeftArrow.png-b10c1b5039b1f07bb094898b8d1f242e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Environment/Door-Sheet-Scaled.png"
-dest_files=["res://.godot/imported/Door-Sheet-Scaled.png-9f8334641db0280b0c2b514ac58d7f62.ctex"]
+source_file="res://Assets/UI/Icons/KB_Buttons/KB_Button-LeftArrow.png"
+dest_files=["res://.godot/imported/KB_Button-LeftArrow.png-b10c1b5039b1f07bb094898b8d1f242e.ctex"]
 
 [params]
 

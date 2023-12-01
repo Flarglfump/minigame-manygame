@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://e1op1562esd5"
-path="res://.godot/imported/Door-Sheet-Scaled.png-9f8334641db0280b0c2b514ac58d7f62.ctex"
+uid="uid://clripvjb2h0sf"
+path="res://.godot/imported/KB_Button-Shift.png-1a7a398e04379d439ba14b0aa8e55a1f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Environment/Door-Sheet-Scaled.png"
-dest_files=["res://.godot/imported/Door-Sheet-Scaled.png-9f8334641db0280b0c2b514ac58d7f62.ctex"]
+source_file="res://Assets/UI/Icons/KB_Buttons/KB_Button-Shift.png"
+dest_files=["res://.godot/imported/KB_Button-Shift.png-1a7a398e04379d439ba14b0aa8e55a1f.ctex"]
 
 [params]
 

@@ -1,7 +1,31 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4pgfvobr5k3e"]
+[gd_scene load_steps=7 format=3 uid="uid://c4pgfvobr5k3e"]
 
-[ext_resource type="Texture2D" uid="uid://dpvis8fai0fbw" path="res://Assets/Environment/Door-Sheet-Scaled.png" id="1_t1jmo"]
+[ext_resource type="Texture2D" uid="uid://e1op1562esd5" path="res://Assets/Environment/Door-Sheet-Scaled.png" id="1_t1jmo"]
 [ext_resource type="Script" path="res://Scenes/Environment/LevelDoor.gd" id="2_h17qy"]
+
+[sub_resource type="Animation" id="Animation_22dwv"]
+resource_name = "Lock"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_j7g6a"]
+resource_name = "Unlock"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1w0gw"]
+_data = {
+"Lock": SubResource("Animation_22dwv"),
+"Unlock": SubResource("Animation_j7g6a")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_thd56"]
 size = Vector2(64, 130)
@@ -9,8 +33,13 @@ size = Vector2(64, 130)
 [node name="Door" type="Sprite2D"]
 texture = ExtResource("1_t1jmo")
 hframes = 2
-frame = 1
+vframes = 3
 script = ExtResource("2_h17qy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1w0gw")
+}
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 8

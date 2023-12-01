@@ -1,40 +1,49 @@
 extends Sprite2D
 
-var _body_overlapping: bool
-var _body: Node2D
+@onready var animationPlayer := $AnimationPlayer
 
-var locked: bool
+var _locked: bool
+var _overlapping_bodies: Array[Node2D]
+
+signal door_entered
 
 func _ready() -> void:
-	lock()
-	_body_overlapping = false
+	pass
 
 func _physics_process(_delta: float) -> void:
-	if _body_overlapping and _body.is_in_group("Player"):
-		print("Body Overlapping Door!")
-		var body_radius = _body.get_node("CollisionShape2D").shape.radius
-		var body_height = _body.get_node("CollisionShape2D").shape.height
-		var area_extents = $Area2D.get_node("CollisionShape2D").shape.extents
-		var body_rect = Rect2(Vector2(_body.global_position.x - body_radius, _body.global_position.y - body_height/2), Vector2(body_radius * 2, body_height))
-		var area_rect = Rect2($Area2D.global_position - area_extents, area_extents * 2)
-		if area_rect.encloses(body_rect):
-			print("Player is fully inside door area!")
-		else:
-			print("Player is not fully inside door area!")
+	for _body in _overlapping_bodies:
+		if _body.is_in_group("Player"):
+			var body_radius = _body.get_node("CollisionShape2D").shape.radius
+			var body_height = _body.get_node("CollisionShape2D").shape.height
+			var area_extents = $Area2D.get_node("CollisionShape2D").shape.extents
+			var body_rect = Rect2(Vector2(_body.global_position.x - body_radius, _body.global_position.y - body_height/2), Vector2(body_radius * 2, body_height))
+			var area_rect = Rect2($Area2D.global_position - area_extents, area_extents * 2)
+			if area_rect.encloses(body_rect) and not _locked and Input.is_action_pressed("move_up"):
+				print("Level Complete!")
+				emit_signal("door_entered")
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	_body_overlapping = true
-	_body = body
+	_overlapping_bodies.append(body)
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
-	_body_overlapping = false
-	_body = body
+	
+	var i := _overlapping_bodies.find(body)
+	if (i != -1):
+		_overlapping_bodies.remove_at(i)
 
-func lock():
-	locked = true
-	frame = 1
+func lock() -> void:
+	animationPlayer.play("Lock")
+	_locked = true
 
-func unlock():
-	locked = false
-	frame = 0
+func unlock() -> void:
+	await animationPlayer.play("Unlock")
+	_locked = true
+
+func initLockState(locked: bool) -> void:
+	if (locked):
+		_locked = true
+		frame = 0
+	else:
+		_locked = false
+		frame = 5

@@ -1,9 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://dj0nvm4dr3w0y"]
+[gd_scene load_steps=14 format=3 uid="uid://dj0nvm4dr3w0y"]
 
 [ext_resource type="Texture2D" uid="uid://65d8gjuysox8" path="res://Assets/Environment/Tilesets/FloorAndWallTiles.png" id="1_lp8wr"]
 [ext_resource type="Script" path="res://Scenes/Levels/level_1.gd" id="1_vu0s0"]
 [ext_resource type="PackedScene" uid="uid://c4pgfvobr5k3e" path="res://Scenes/Environment/LevelDoor.tscn" id="3_cbhj1"]
 [ext_resource type="FontFile" uid="uid://balhd3cdoj2gg" path="res://Assets/UI/Fonts/Custom/manaspc_custom.tres" id="4_hmv6t"]
+[ext_resource type="Texture2D" uid="uid://boii8d5ibu66n" path="res://Assets/UI/Icons/KB_Buttons/KB_Button-LeftArrow.png" id="5_rexjf"]
+[ext_resource type="Texture2D" uid="uid://rxgdkksl0vx6" path="res://Assets/UI/Icons/KB_Buttons/KB_Button-RightArrow.png" id="6_sap26"]
+[ext_resource type="Texture2D" uid="uid://dr270648cg46h" path="res://Assets/UI/Icons/KB_Buttons/KB_Button-A.png" id="7_sj2jx"]
+[ext_resource type="Texture2D" uid="uid://bi3bmxwf6y5fe" path="res://Assets/UI/Icons/KB_Buttons/KB_Button-D.png" id="8_y1b0i"]
+[ext_resource type="Texture2D" uid="uid://d3ovjd636vt8" path="res://Assets/UI/Icons/KB_Buttons/KB_Button-W.png" id="9_h08wm"]
+[ext_resource type="Texture2D" uid="uid://c30wn1uk1n5in" path="res://Assets/UI/Icons/KB_Buttons/KB_Button-UpArrow-Scaled200.png" id="10_wd2gd"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kglbw"]
 
@@ -66,8 +72,9 @@ physics_layer_0/collision_mask = 5
 physics_layer_0/physics_material = SubResource("PhysicsMaterial_kglbw")
 sources/0 = SubResource("TileSetAtlasSource_ht5v2")
 
-[node name="Level1" type="Node2D"]
+[node name="Level1" type="Node2D" groups=["Level"]]
 texture_filter = 1
+texture_repeat = 1
 script = ExtResource("1_vu0s0")
 
 [node name="SpawnMarker1" type="Marker2D" parent="."]
@@ -82,13 +89,73 @@ layer_0/tile_data = PackedInt32Array(2097152, 0, 0, 2162688, 0, 0, 2097153, 0, 0
 [node name="EndDoor" parent="." instance=ExtResource("3_cbhj1")]
 position = Vector2(1606, 928)
 
-[node name="Label" type="Label" parent="."]
-offset_left = 231.0
-offset_top = 147.0
-offset_right = 271.0
-offset_bottom = 170.0
+[node name="Label1" type="Label" parent="."]
+offset_left = 152.0
+offset_top = 192.0
+offset_right = 632.0
+offset_bottom = 255.0
 theme_override_fonts/font = ExtResource("4_hmv6t")
 theme_override_font_sizes/font_size = 60
-text = "Move with"
+text = "The road ahe"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 784.0
+offset_top = 192.0
+offset_right = 1624.0
+offset_bottom = 255.0
+theme_override_fonts/font = ExtResource("4_hmv6t")
+theme_override_font_sizes/font_size = 60
+text = "is paved with danger."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 160.0
+offset_top = 448.0
+offset_right = 1000.0
+offset_bottom = 574.0
+theme_override_fonts/font = ExtResource("4_hmv6t")
+theme_override_font_sizes/font_size = 60
+text = "Yet, we must march on
+what awaits."
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 1074.0
+offset_top = 448.0
+offset_right = 1714.0
+offset_bottom = 511.0
+theme_override_fonts/font = ExtResource("4_hmv6t")
+theme_override_font_sizes/font_size = 60
+text = "ard, unafraid of"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KbButton-LeftArrow" type="Sprite2D" parent="."]
+position = Vector2(664, 296)
+texture = ExtResource("5_rexjf")
+
+[node name="KbButton-RightArrow" type="Sprite2D" parent="."]
+position = Vector2(736, 296)
+texture = ExtResource("6_sap26")
+
+[node name="KbButton-A" type="Sprite2D" parent="."]
+position = Vector2(664, 224)
+texture = ExtResource("7_sj2jx")
+
+[node name="KbButton-D" type="Sprite2D" parent="."]
+position = Vector2(736, 224)
+texture = ExtResource("8_y1b0i")
+
+[node name="KbButton-W" type="Sprite2D" parent="."]
+position = Vector2(1040, 480)
+texture = ExtResource("9_h08wm")
+
+[node name="KbButton-UpArrow" type="Sprite2D" parent="."]
+position = Vector2(1040, 552)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_wd2gd")
+
+[editable path="EndDoor"]

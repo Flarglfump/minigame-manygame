@@ -1,22 +1,23 @@
 extends Node2D
 @onready var packedPlayer := preload("res://Scenes/Actors/Player/player.tscn")
 @onready var spawnPoint1 = $SpawnMarker1.get_global_position()
+@onready var endDoor := $EndDoor
 
-var doCleanup
+var _playersToClear : int
+var _do_reset : bool
 
-var players: Array[CharacterBody2D] # List of players active in level
-var playersToClear: int
+signal level_complete
+
 # Spawn player at initial spawnpoint
 func _ready() -> void:
-	_spawn_player(spawnPoint1)
-	doCleanup = false
-	playersToClear = 0
-
+	endDoor.connect("door_entered", _on_end_door_entered)
+	init_level()
+	
 # Watch for reset or pause inputs
 func _process(_delta: float) -> void:
 	# Handle Reset Event
 	if Input.is_action_just_pressed("reset"):
-		_reset_level()
+		_on_reset_pressed()
 
 	# Handle Jump Event
 	if Input.is_action_just_pressed("jump"):
@@ -26,39 +27,44 @@ func _process(_delta: float) -> void:
 func _spawn_player(globalSpawnpoint: Vector2) -> void:
 	var newPlayer := packedPlayer.instantiate()
 	self.add_child(newPlayer)
-	newPlayer.initPlayer(globalSpawnpoint, players.size())
+	newPlayer.initPlayer(globalSpawnpoint)
+	newPlayer.add_to_group("ActivePlayers")
+	newPlayer.connect("death_animation_finished", _on_player_death_animation_finished.bind(newPlayer))
 
-	players.append(newPlayer)
-
-# Kill player and remove node from players list
-func _kill_player(id: int) -> void:
-	players[id].die()
-	print("Awaiting death")
-	await players[id].animationPlayer.animation_finished
-	print ("Death finished")
-	await get_tree().create_timer(0.5).timeout
-
-# Reset ids of players in player list
-func _reset_player_ids() -> void:
-	var i: = 0
-	for player in players:
-		player.setID(i)
-		i += 1
-
-# Kill all players
-func _kill_all_players() -> void:
-	var i := players.size() - 1
-	while i >= 0:
-		players[i].die()
-		if i == 0:
-			await players[i].animationPlayer.animation_finished
-		i -= 1
-	await get_tree().create_timer(0.5).timeout
-	for player in players:
-		player.queue_free()
-	players.clear()
+func _on_reset_pressed() -> void:
+	_playersToClear = _get_player_count()
+	_do_reset = true
+	
+	for player in get_tree().get_nodes_in_group("ActivePlayers"):
+		player.die()
 
 # Reset level
 func _reset_level() -> void:
-	await _kill_all_players()
+	
+	init_level()
+
+func _get_player_count() -> int:
+	return get_tree().get_nodes_in_group("ActivePlayers").size()
+
+func kill_all_players() -> void:
+	for player in get_tree().get_nodes_in_group("ActivePlayers"):
+		player.die()
+
+func init_level() -> void:
+	_do_reset = false
 	_spawn_player(spawnPoint1)
+	endDoor.initLockState(false)
+
+func _on_end_door_entered() -> void:
+	emit_signal("level_complete")
+
+func _on_player_death_animation_finished(sender: CharacterBody2D) -> void:
+	if not sender.is_in_group("Player"):
+		return
+	
+	sender.remove_from_group("ActivePlayers")
+	_playersToClear -= 1
+	await get_tree().create_timer(0.5).timeout
+	sender.queue_free()
+	if _playersToClear == 0 and _do_reset:
+		_reset_level()

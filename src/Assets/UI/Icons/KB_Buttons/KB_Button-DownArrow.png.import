@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://e1op1562esd5"
-path="res://.godot/imported/Door-Sheet-Scaled.png-9f8334641db0280b0c2b514ac58d7f62.ctex"
+uid="uid://34enrydjybdo"
+path="res://.godot/imported/KB_Button-DownArrow.png-e4c2c8c52e4d04dd7eda04ae4d4ab5d9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Environment/Door-Sheet-Scaled.png"
-dest_files=["res://.godot/imported/Door-Sheet-Scaled.png-9f8334641db0280b0c2b514ac58d7f62.ctex"]
+source_file="res://Assets/UI/Icons/KB_Buttons/KB_Button-DownArrow.png"
+dest_files=["res://.godot/imported/KB_Button-DownArrow.png-e4c2c8c52e4d04dd7eda04ae4d4ab5d9.ctex"]
 
 [params]
 

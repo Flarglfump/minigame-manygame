@@ -11,16 +11,14 @@ extends CharacterBody2D
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var _global_spawnpoint: Vector2
-var _id : int
-var _should_kill : bool
+
+signal death_animation_finished
 
 # Initialize character
-func initPlayer(globalSpawnpoint: Vector2, id: int) -> void:
+func initPlayer(globalSpawnpoint: Vector2) -> void:
 	freeze()
 	_global_spawnpoint = globalSpawnpoint
 	set_global_position(_global_spawnpoint)
-	_id = id
-	_should_kill = false
 	animationPlayer.play("RESET")
 	unfreeze()
 
@@ -67,8 +65,7 @@ func _physics_process(delta: float) -> void:
 
 # Player dies
 func die() -> void:
-	print("Player kill function called for player", _id)
-	_should_kill = true
+	print("Player kill function called for player")
 	freeze()
 	animationPlayer.play("Die")
 
@@ -78,10 +75,6 @@ func freeze() -> void:
 func unfreeze() -> void:
 	CONTROLLABLE = true
 
-func setID(id: int) -> void:
-	_id = id
-func getID() -> int:
-	return _id
-
-func getKillStatus() -> bool:
-	return _should_kill
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "Die":
+		emit_signal("death_animation_finished")
