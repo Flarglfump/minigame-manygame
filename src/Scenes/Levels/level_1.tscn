@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dj0nvm4dr3w0y"]
+[gd_scene load_steps=15 format=3 uid="uid://dj0nvm4dr3w0y"]
 
 [ext_resource type="Texture2D" uid="uid://65d8gjuysox8" path="res://Assets/Environment/Tilesets/FloorAndWallTiles.png" id="1_lp8wr"]
 [ext_resource type="Script" path="res://Scenes/Levels/level_1.gd" id="1_vu0s0"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bi3bmxwf6y5fe" path="res://Assets/UI/Icons/KB_Buttons/KB_Button-D.png" id="8_y1b0i"]
 [ext_resource type="Texture2D" uid="uid://d3ovjd636vt8" path="res://Assets/UI/Icons/KB_Buttons/KB_Button-W.png" id="9_h08wm"]
 [ext_resource type="Texture2D" uid="uid://c30wn1uk1n5in" path="res://Assets/UI/Icons/KB_Buttons/KB_Button-UpArrow-Scaled200.png" id="10_wd2gd"]
+[ext_resource type="PackedScene" uid="uid://8ehg0yiusc1i" path="res://Scenes/UI/pause_menu.tscn" id="11_vmkuk"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kglbw"]
 
@@ -89,7 +90,14 @@ layer_0/tile_data = PackedInt32Array(2097152, 0, 0, 2162688, 0, 0, 2097153, 0, 0
 [node name="EndDoor" parent="." instance=ExtResource("3_cbhj1")]
 position = Vector2(1606, 928)
 
-[node name="Label1" type="Label" parent="."]
+[node name="LevelText" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label1" type="Label" parent="LevelText"]
+layout_mode = 0
 offset_left = 152.0
 offset_top = 192.0
 offset_right = 632.0
@@ -100,62 +108,92 @@ text = "The road ahe"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="."]
+[node name="Label2" type="Label" parent="LevelText"]
+layout_mode = 0
 offset_left = 784.0
 offset_top = 192.0
-offset_right = 1624.0
+offset_right = 1704.0
 offset_bottom = 255.0
 theme_override_fonts/font = ExtResource("4_hmv6t")
 theme_override_font_sizes/font_size = 60
-text = "is paved with danger."
+text = "is paved with hardship."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label3" type="Label" parent="."]
+[node name="Label3" type="Label" parent="LevelText"]
+layout_mode = 0
 offset_left = 160.0
 offset_top = 448.0
 offset_right = 1000.0
-offset_bottom = 574.0
-theme_override_fonts/font = ExtResource("4_hmv6t")
-theme_override_font_sizes/font_size = 60
-text = "Yet, we must march on
-what awaits."
-vertical_alignment = 1
-
-[node name="Label4" type="Label" parent="."]
-offset_left = 1074.0
-offset_top = 448.0
-offset_right = 1714.0
 offset_bottom = 511.0
 theme_override_fonts/font = ExtResource("4_hmv6t")
 theme_override_font_sizes/font_size = 60
-text = "ard, unafraid of"
+text = "Yet, we must march on
+"
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="LevelText"]
+layout_mode = 0
+offset_left = 1074.0
+offset_top = 448.0
+offset_right = 1634.0
+offset_bottom = 511.0
+theme_override_fonts/font = ExtResource("4_hmv6t")
+theme_override_font_sizes/font_size = 60
+text = "ard, unafraid."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="KbButton-LeftArrow" type="Sprite2D" parent="."]
-position = Vector2(664, 296)
+[node name="KbButton-LeftArrow" type="TextureRect" parent="LevelText"]
+layout_mode = 0
+offset_left = 648.0
+offset_top = 267.0
+offset_right = 706.0
+offset_bottom = 325.0
 texture = ExtResource("5_rexjf")
 
-[node name="KbButton-RightArrow" type="Sprite2D" parent="."]
-position = Vector2(736, 296)
+[node name="KbButton-RightArrow" type="TextureRect" parent="LevelText"]
+layout_mode = 0
+offset_left = 720.0
+offset_top = 267.0
+offset_right = 778.0
+offset_bottom = 325.0
 texture = ExtResource("6_sap26")
 
-[node name="KbButton-A" type="Sprite2D" parent="."]
-position = Vector2(664, 224)
+[node name="KbButton-A" type="TextureRect" parent="LevelText"]
+layout_mode = 0
+offset_left = 648.0
+offset_top = 195.0
+offset_right = 706.0
+offset_bottom = 252.0
 texture = ExtResource("7_sj2jx")
 
-[node name="KbButton-D" type="Sprite2D" parent="."]
-position = Vector2(736, 224)
+[node name="KbButton-D" type="TextureRect" parent="LevelText"]
+layout_mode = 0
+offset_left = 720.0
+offset_top = 195.0
+offset_right = 778.0
+offset_bottom = 253.0
 texture = ExtResource("8_y1b0i")
 
-[node name="KbButton-W" type="Sprite2D" parent="."]
-position = Vector2(1040, 480)
+[node name="KbButton-W" type="TextureRect" parent="LevelText"]
+layout_mode = 0
+offset_left = 1008.0
+offset_top = 448.0
+offset_right = 1066.0
+offset_bottom = 506.0
 texture = ExtResource("9_h08wm")
 
-[node name="KbButton-UpArrow" type="Sprite2D" parent="."]
-position = Vector2(1040, 552)
+[node name="KbButton-UpArrow" type="TextureRect" parent="LevelText"]
+layout_mode = 0
+offset_left = 1008.0
+offset_top = 520.0
+offset_right = 1124.0
+offset_bottom = 636.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_wd2gd")
+
+[node name="PauseMenu" parent="." instance=ExtResource("11_vmkuk")]
+visible = false
 
 [editable path="EndDoor"]

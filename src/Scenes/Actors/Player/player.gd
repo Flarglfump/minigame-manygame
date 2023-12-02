@@ -12,7 +12,9 @@ var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var _global_spawnpoint: Vector2
 
+
 signal death_animation_finished
+signal touched_hazard
 
 # Initialize character
 func initPlayer(globalSpawnpoint: Vector2) -> void:
@@ -78,3 +80,7 @@ func unfreeze() -> void:
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "Die":
 		emit_signal("death_animation_finished")
+
+func _on_player_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Hazard"):
+		emit_signal("touched_hazard")

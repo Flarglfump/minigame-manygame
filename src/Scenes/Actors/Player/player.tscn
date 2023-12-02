@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dw4kqu2bv4n23"]
+[gd_scene load_steps=10 format=3 uid="uid://dw4kqu2bv4n23"]
 
 [ext_resource type="Script" path="res://Scenes/Actors/Player/player.gd" id="1_ifmgf"]
 [ext_resource type="Texture2D" uid="uid://s352wedm7qlw" path="res://Assets/Characters/Player/Dude-Sheet-white-Scaled.png" id="2_o4wfl"]
@@ -128,9 +128,12 @@ _data = {
 radius = 20.0
 height = 98.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_imbea"]
+size = Vector2(4, 4)
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 texture_filter = 1
-collision_mask = 6
+collision_mask = 22
 script = ExtResource("1_ifmgf")
 
 [node name="SpriteBody" type="Sprite2D" parent="."]
@@ -146,4 +149,12 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_j08sm")
 
+[node name="HazardDetector" type="Area2D" parent="."]
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HazardDetector"]
+position = Vector2(0, 47)
+shape = SubResource("RectangleShape2D_imbea")
+
 [connection signal="animation_finished" from="SpriteBody/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="HazardDetector" to="." method="_on_player_body_entered"]

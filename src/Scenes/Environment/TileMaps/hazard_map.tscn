@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://gfq3fpco4p3h"]
+
+[ext_resource type="Texture2D" uid="uid://drs8kfn8yg500" path="res://Assets/Environment/Tilesets/LavaTiles.png" id="1_gha2m"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wylbo"]
+texture = ExtResource("1_gha2m")
+texture_region_size = Vector2i(32, 32)
+0:0/animation_columns = 2
+0:0/animation_frame_0/duration = 0.5
+0:0/animation_frame_1/duration = 0.5
+0:0/animation_frame_2/duration = 0.5
+0:0/animation_frame_3/duration = 0.5
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -12.875, 16, -13.5, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_3hqyp"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 16
+physics_layer_0/collision_mask = 5
+sources/0 = SubResource("TileSetAtlasSource_wylbo")
+
+[node name="HazardMap" type="TileMap" groups=["Hazard"]]
+tile_set = SubResource("TileSet_3hqyp")
+format = 2
