@@ -32,9 +32,6 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("reset"):
 		_on_reset_pressed()
 
-	if Input.is_action_just_pressed("jump"):
-		_spawn_player(spawnPoint1)
-
 # Spawn player, initialize, and append to player list
 func _spawn_player(globalSpawnpoint: Vector2) -> void:
 	var newPlayer := packedPlayer.instantiate()

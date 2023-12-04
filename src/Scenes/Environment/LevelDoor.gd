@@ -7,9 +7,6 @@ var _overlapping_bodies: Array[Node2D]
 
 signal door_entered
 
-func _ready() -> void:
-	pass
-
 func _physics_process(_delta: float) -> void:
 	for _body in _overlapping_bodies:
 		if _body.is_in_group("Player"):
@@ -19,7 +16,6 @@ func _physics_process(_delta: float) -> void:
 			var body_rect = Rect2(Vector2(_body.global_position.x - body_radius, _body.global_position.y - body_height/2), Vector2(body_radius * 2, body_height))
 			var area_rect = Rect2($Area2D.global_position - area_extents, area_extents * 2)
 			if area_rect.encloses(body_rect) and not _locked and Input.is_action_pressed("move_up"):
-				print("Level Complete!")
 				emit_signal("door_entered")
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
@@ -38,7 +34,7 @@ func lock() -> void:
 
 func unlock() -> void:
 	await animationPlayer.play("Unlock")
-	_locked = true
+	_locked = false
 
 func initLockState(locked: bool) -> void:
 	if (locked):

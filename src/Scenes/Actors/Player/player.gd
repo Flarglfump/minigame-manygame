@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var animationPlayer = $SpriteBody/AnimationPlayer
 @onready var sprite = $SpriteBody
 
+var _mirror_movement
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var _global_spawnpoint: Vector2
@@ -17,9 +18,10 @@ signal death_animation_finished
 signal touched_hazard
 
 # Initialize character
-func initPlayer(globalSpawnpoint: Vector2) -> void:
+func initPlayer(globalSpawnpoint: Vector2, reverseControls := false) -> void:
 	freeze()
 	_global_spawnpoint = globalSpawnpoint
+	_mirror_movement = reverseControls
 	set_global_position(_global_spawnpoint)
 	animationPlayer.play("RESET")
 	unfreeze()
@@ -38,7 +40,11 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 
 	# Handle movement calculation and animation
-	var direction := Input.get_axis("move_left", "move_right")
+	var direction : float
+	if _mirror_movement:
+		direction = Input.get_axis("move_right", "move_left")
+	else:
+		direction = Input.get_axis("move_left", "move_right")
 	if direction:
 		# X input pressed -> Add to velocity
 		if Input.is_action_pressed("run"):
