@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://Scenes/Levels/level_5.gd" id="1_785we"]
 [ext_resource type="Texture2D" uid="uid://65d8gjuysox8" path="res://Assets/Environment/Tilesets/FloorAndWallTiles.png" id="3_frvwl"]
-[ext_resource type="PackedScene" uid="uid://c4pgfvobr5k3e" path="res://Scenes/Environment/LevelDoor.tscn" id="4_hpdvi"]
+[ext_resource type="PackedScene" uid="uid://c4pgfvobr5k3e" path="res://Scenes/Environment/Temp/LevelDoor.tscn" id="4_hpdvi"]
 [ext_resource type="FontFile" uid="uid://balhd3cdoj2gg" path="res://Assets/UI/Fonts/Custom/manaspc_custom.tres" id="5_fcltp"]
 [ext_resource type="Texture2D" uid="uid://d3ovjd636vt8" path="res://Assets/UI/Icons/KB_Buttons/KB_Button-W.png" id="5_t5a00"]
 [ext_resource type="Texture2D" uid="uid://03x0qthvxxfr" path="res://Assets/UI/Icons/KB_Buttons/KB_Button-UpArrow.png" id="6_83gwf"]
 [ext_resource type="PackedScene" uid="uid://8ehg0yiusc1i" path="res://Scenes/UI/pause_menu.tscn" id="7_6x7h2"]
-[ext_resource type="PackedScene" uid="uid://crv1sw2jkr31r" path="res://Scenes/Environment/mirror.tscn" id="8_2u3aw"]
+[ext_resource type="PackedScene" uid="uid://crv1sw2jkr31r" path="res://Scenes/Environment/Mirror/mirror.tscn" id="8_2u3aw"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kglbw"]
 

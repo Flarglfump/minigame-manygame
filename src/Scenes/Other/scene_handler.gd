@@ -6,10 +6,11 @@ var levelDict := {
 	"Level2" : "res://Scenes/Levels/level_2.tscn",
 	"Level3" : "res://Scenes/Levels/level_3.tscn",
 	"Level4" : "res://Scenes/Levels/level_4.tscn",
-	"Level5" : "res://Scenes/Levels/level_5.tscn"
+	"Level5" : "res://Scenes/Levels/level_5.tscn",
+	"Level6" : "res://Scenes/Levels/level_6.tscn"
 }
 
-var levelList := ["MainMenu", "Level1", "Level2", "Level3", "Level4", "Level5"]
+var levelList := ["MainMenu", "Level1", "Level2", "Level3", "Level4", "Level5", "Level6"]
 
 func _ready() -> void:
 	_load_main_menu()
